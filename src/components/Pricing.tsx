@@ -1,9 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Phone, Mail, Sun } from "lucide-react";
+import { CheckCircle2, Phone, Mail, Sun, Clock, Calendar } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
 import QuoteForm from "@/components/QuoteForm";
 import { useTranslation } from "@/i18n/useTranslation";
+import { cn } from "@/lib/utils";
 
 export default function Pricing() {
   const { t } = useTranslation();
@@ -56,7 +58,7 @@ export default function Pricing() {
               {t("quote.description")}
             </p>
 
-            <ul className="space-y-4 mb-10">
+            <ul className="space-y-4 mb-8">
               {benefits.map((b) => (
                 <li key={b} className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -65,13 +67,19 @@ export default function Pricing() {
               ))}
             </ul>
 
+            {/* Response time indicator */}
+            <div className="flex items-center gap-2 mb-8 text-sm text-muted-foreground">
+              <Clock className="w-4 h-4 text-primary flex-shrink-0" />
+              <span>{t("quote.responseTime")}</span>
+            </div>
+
             {/* Contact info */}
             <div className="space-y-3 p-6 bg-card/60 rounded-2xl border border-border/40">
               <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-4">
-                Or reach us directly
+                {t("quote.reachDirectly")}
               </p>
               <a
-                href={`tel:${t("quote.phone")}`}
+                href={`tel:${t("quote.phone").replace(/\D/g, "")}`}
                 className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
               >
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -88,6 +96,20 @@ export default function Pricing() {
                 </div>
                 <span className="font-medium">{t("quote.email")}</span>
               </a>
+
+              {/* Schedule a Call */}
+              <div className="pt-3 border-t border-border/40">
+                <a
+                  href={`tel:${t("quote.phone").replace(/\D/g, "")}`}
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "sm" }),
+                    "w-full gap-2 border-primary/30 text-primary hover:bg-primary/10"
+                  )}
+                >
+                  <Calendar className="w-4 h-4" />
+                  {t("quote.scheduleCall")}
+                </a>
+              </div>
             </div>
           </motion.div>
 

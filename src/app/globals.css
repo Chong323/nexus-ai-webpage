@@ -127,4 +127,141 @@
     background: oklch(0.97 0.003 80);
     color: oklch(0.15 0.03 255);
   }
+
+  /* ── Certifications marquee ── */
+  .marquee-track {
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* ── Fluid typography ── */
+  h1 {
+    font-size: clamp(2.25rem, 4vw + 1rem, 4.75rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: clamp(1.625rem, 2.5vw + 0.75rem, 2.625rem);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+  }
+
+  /* ── Noise texture overlay ── */
+  .noise-overlay {
+    position: relative;
+    isolation: isolate;
+  }
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Animated gradient utility ── */
+  .animated-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.75 0.17 75),
+      oklch(0.82 0.15 90),
+      oklch(0.68 0.19 60),
+      oklch(0.75 0.17 75)
+    );
+    background-size: 300% 300%;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  /* ── Section clip-path dividers ── */
+  .clip-angle-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3vw), 0 100%);
+  }
+  .clip-angle-top {
+    clip-path: polygon(0 3vw, 100% 0, 100% 100%, 0 100%);
+  }
+
+  /* ── Form field amber glow on focus ── */
+  .input-glow:focus {
+    border-color: oklch(0.75 0.17 75 / 0.65) !important;
+    box-shadow: 0 0 0 3px oklch(0.75 0.17 75 / 0.18) !important;
+    outline: none;
+  }
+
+  /* ── Card inner glow on hover ── */
+  .card-inner-glow:hover {
+    box-shadow:
+      0 20px 40px oklch(0.75 0.17 75 / 0.12),
+      inset 0 1px 0 oklch(0.75 0.17 75 / 0.08);
+  }
+
+  /* ── Pulsing ring (for process circles on hover) ── */
+  .pulse-ring::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    border: 2px solid oklch(0.75 0.17 75 / 0.5);
+    animation: pulse-ring 1.8s ease-out infinite;
+  }
+
+  /* ── Hero primary CTA shimmer ── */
+  .hero-btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      oklch(1 0 0 / 0.18) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0s;
+  }
+  .hero-btn-shine:hover::after {
+    transform: translateX(100%);
+    transition: transform 0.55s ease;
+  }
+}
+
+/* ── Accessibility: respect reduced-motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-track {
+    animation: none !important;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
 }

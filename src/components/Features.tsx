@@ -1,46 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Sun, Building2, Battery, Plug, Car, Landmark } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Sun,
+  Building2,
+  Battery,
+  Plug,
+  Car,
+  Landmark,
+  ArrowRight,
+  Camera,
+} from "lucide-react";
 import { useTranslation } from "@/i18n/useTranslation";
+import { cn } from "@/lib/utils";
 
 const services = [
   {
     icon: Sun,
     key: "residential",
-    color: "text-amber-400",
-    bg: "bg-amber-400/10",
+    // IMAGE SLOT → /public/images/service-residential.jpg (rooftop solar panel photo)
   },
   {
     icon: Building2,
     key: "commercial",
-    color: "text-sky-400",
-    bg: "bg-sky-400/10",
+    // IMAGE SLOT → /public/images/service-commercial.jpg (commercial rooftop)
   },
   {
     icon: Battery,
     key: "battery",
-    color: "text-emerald-400",
-    bg: "bg-emerald-400/10",
+    // IMAGE SLOT → /public/images/service-battery.jpg (Powerwall install)
   },
   {
     icon: Plug,
     key: "ev",
-    color: "text-violet-400",
-    bg: "bg-violet-400/10",
+    // IMAGE SLOT → /public/images/service-ev.jpg (EV charger photo)
   },
   {
     icon: Car,
     key: "carport",
-    color: "text-orange-400",
-    bg: "bg-orange-400/10",
+    // IMAGE SLOT → /public/images/service-carport.jpg (solar carport)
   },
   {
     icon: Landmark,
     key: "farm",
-    color: "text-cyan-400",
-    bg: "bg-cyan-400/10",
+    // IMAGE SLOT → /public/images/service-farm.jpg (solar farm)
   },
 ];
 
@@ -88,24 +92,53 @@ export default function Features() {
             return (
               <motion.div
                 key={s.key}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 24, scale: 0.97 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
               >
-                <Card className="h-full card-hover border-border/40 bg-card/80">
-                  <CardHeader className="pb-3">
-                    <div className={`w-11 h-11 rounded-xl ${s.bg} flex items-center justify-center mb-4`}>
-                      <Icon className={`w-5 h-5 ${s.color}`} />
+                <Card className={cn(
+                  "h-full border-border/40 bg-card/80 overflow-hidden group",
+                  "transition-all duration-300 hover:-translate-y-1.5",
+                  "hover:border-primary/30 card-inner-glow"
+                )}>
+                  {/*
+                    IMAGE SLOT — replace the placeholder below with:
+                    <div className="relative aspect-video overflow-hidden">
+                      <Image
+                        src={`/images/service-${s.key}.jpg`}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        alt={t(`services.${s.key}.title`)}
+                      />
                     </div>
-                    <h3 className="font-semibold text-lg text-foreground">
-                      {t(`services.${s.key}.title`)}
-                    </h3>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">
+                  */}
+                  <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-muted/40 to-muted/20">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Camera className="w-8 h-8 text-muted-foreground/25" />
+                    </div>
+                    <div className="absolute bottom-0 right-0 w-28 h-28 bg-primary/6 rounded-full blur-2xl" />
+                  </div>
+
+                  <CardContent className="pt-5 pb-6 px-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <h3 className="font-semibold text-base text-foreground">
+                        {t(`services.${s.key}.title`)}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                       {t(`services.${s.key}.description`)}
                     </p>
+                    <a
+                      href="#contact"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    >
+                      {t("services.learnMore")}
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
                   </CardContent>
                 </Card>
               </motion.div>

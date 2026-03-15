@@ -1,11 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslation } from "@/i18n/useTranslation";
 import { CheckCircle2 } from "lucide-react";
+
+const fieldAnim = (delay: number) => ({
+  initial: { opacity: 0, y: 14 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.45, delay },
+});
 
 interface FormData {
   name: string;
@@ -68,7 +76,7 @@ export default function QuoteForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <motion.div {...fieldAnim(0)} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-foreground/80 mb-1.5">
             {t("quote.name")} <span className="text-primary">*</span>
@@ -79,7 +87,7 @@ export default function QuoteForm() {
             value={form.name}
             onChange={handleChange}
             required
-            className="bg-muted/30 border-border/50"
+            className="bg-muted/30 border-border/50 input-glow"
           />
         </div>
         <div>
@@ -93,12 +101,12 @@ export default function QuoteForm() {
             value={form.phone}
             onChange={handleChange}
             required
-            className="bg-muted/30 border-border/50"
+            className="bg-muted/30 border-border/50 input-glow"
           />
         </div>
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div {...fieldAnim(0.07)}>
         <label className="block text-sm font-medium text-foreground/80 mb-1.5">
           {t("quote.emailField")} <span className="text-primary">*</span>
         </label>
@@ -109,11 +117,11 @@ export default function QuoteForm() {
           value={form.email}
           onChange={handleChange}
           required
-          className="bg-muted/30 border-border/50"
+          className="bg-muted/30 border-border/50 input-glow"
         />
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div {...fieldAnim(0.14)}>
         <label className="block text-sm font-medium text-foreground/80 mb-1.5">
           {t("quote.address")} <span className="text-primary">*</span>
         </label>
@@ -123,11 +131,11 @@ export default function QuoteForm() {
           value={form.address}
           onChange={handleChange}
           required
-          className="bg-muted/30 border-border/50"
+          className="bg-muted/30 border-border/50 input-glow"
         />
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <motion.div {...fieldAnim(0.21)} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-foreground/80 mb-1.5">
             {t("quote.projectType")} <span className="text-primary">*</span>
@@ -137,7 +145,7 @@ export default function QuoteForm() {
             value={form.projectType}
             onChange={handleChange}
             required
-            className="w-full h-10 rounded-md border border-border/50 bg-muted/30 px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+            className="input-glow w-full h-10 rounded-md border border-border/50 bg-muted/30 px-3 py-2 text-sm text-foreground focus:outline-none"
           >
             <option value="" disabled>
               — Select —
@@ -158,7 +166,7 @@ export default function QuoteForm() {
             name="electricBill"
             value={form.electricBill}
             onChange={handleChange}
-            className="w-full h-10 rounded-md border border-border/50 bg-muted/30 px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+            className="input-glow w-full h-10 rounded-md border border-border/50 bg-muted/30 px-3 py-2 text-sm text-foreground focus:outline-none"
           >
             <option value="">{t("quote.electricBills.placeholder")}</option>
             <option value="under100">{t("quote.electricBills.range1")}</option>
@@ -168,9 +176,9 @@ export default function QuoteForm() {
             <option value="over600">{t("quote.electricBills.range5")}</option>
           </select>
         </div>
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div {...fieldAnim(0.28)}>
         <label className="block text-sm font-medium text-foreground/80 mb-1.5">
           {t("quote.notes")}
         </label>
@@ -180,22 +188,24 @@ export default function QuoteForm() {
           value={form.notes}
           onChange={handleChange}
           rows={3}
-          className="bg-muted/30 border-border/50 resize-none"
+          className="bg-muted/30 border-border/50 resize-none input-glow"
         />
-      </div>
+      </motion.div>
 
       {status === "error" && (
         <p className="text-sm text-destructive">{t("quote.error")}</p>
       )}
 
-      <Button
-        type="submit"
-        size="lg"
-        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 glow"
-        disabled={status === "submitting"}
-      >
-        {status === "submitting" ? t("quote.submitting") : t("quote.submit")}
-      </Button>
+      <motion.div {...fieldAnim(0.35)}>
+        <Button
+          type="submit"
+          size="lg"
+          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 glow hero-btn-shine"
+          disabled={status === "submitting"}
+        >
+          {status === "submitting" ? t("quote.submitting") : t("quote.submit")}
+        </Button>
+      </motion.div>
     </form>
   );
 }

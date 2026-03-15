@@ -5,7 +5,8 @@
     "projects": "Projects",
     "testimonials": "Testimonials",
     "contact": "Contact",
-    "getQuote": "Get Free Quote"
+    "getQuote": "Get Free Quote",
+    "callNow": "Call Now"
   },
   "hero": {
     "badge": "Veteran-Owned · California Solar EPC",
@@ -14,19 +15,17 @@
     "subtitle": "Full-service solar EPC company delivering residential, commercial, and utility-scale solutions. Tesla Certified and Enphase Platinum installer serving Los Angeles and all of Southern California.",
     "cta1": "Get a Free Quote",
     "cta2": "View Our Projects",
-    "stat1Value": "500+",
+    "pricingHook": "Go solar for $0 down — pay as you save",
     "stat1Label": "Projects Completed",
-    "stat2Value": "25MW+",
     "stat2Label": "Installed Capacity",
-    "stat3Value": "Tesla",
-    "stat3Label": "Certified Installer",
-    "stat4Value": "Veteran",
-    "stat4Label": "Owned Business"
+    "stat3Label": "Customer Satisfaction",
+    "stat4Label": "Workmanship Warranty"
   },
   "services": {
     "subtitle": "Our Services",
     "title": "Comprehensive Solar & Energy Solutions",
     "description": "From rooftop solar to utility-scale farms, we design, build, and maintain clean energy systems across California.",
+    "learnMore": "Learn more",
     "residential": {
       "title": "Residential Solar",
       "description": "Custom-designed rooftop solar systems for your home. Reduce your electric bill by up to 90% with premium Tier-1 panels and expert installation."
@@ -120,12 +119,64 @@
     "step6": {
       "title": "Monitoring & Maintenance",
       "description": "24/7 system monitoring with proactive maintenance to ensure peak performance for decades."
-    }
+    },
+    "ctaText": "Ready to get started? Let's design your solar system."
   },
   "testimonials": {
     "subtitle": "Customer Stories",
     "title": "What Our Clients Say",
-    "description": "Hear from homeowners and businesses across Southern California who made the switch to solar."
+    "description": "Hear from homeowners and businesses across Southern California who made the switch to solar.",
+    "googleLabel": "Based on Google Reviews",
+    "items": [
+      {
+        "name": "Michael Chen",
+        "role": "Homeowner",
+        "location": "Arcadia, CA",
+        "avatar": "MC",
+        "project": "12kW system + 2× Powerwall",
+        "quote": "Nason Solar handled everything from permits to installation in 6 weeks. Our electric bill went from $380/month to near zero. The team was professional and cleaned up perfectly after every day's work."
+      },
+      {
+        "name": "Jennifer Park",
+        "role": "Property Manager",
+        "location": "Pasadena, CA",
+        "avatar": "JP",
+        "project": "Commercial 85kW system",
+        "quote": "We installed solar on three commercial properties. Nason delivered on time and under budget for all three. Their in-house team made coordination seamless — one call handled everything."
+      },
+      {
+        "name": "Robert Garcia",
+        "role": "Restaurant Owner",
+        "location": "Los Angeles, CA",
+        "avatar": "RG",
+        "project": "30kW system + EV chargers",
+        "quote": "Being a veteran myself, I wanted to work with a fellow vet-owned business. These guys brought the same standards I recognize from service — structured, thorough, no excuses. Highly recommend."
+      },
+      {
+        "name": "Lisa Wang",
+        "role": "HOA President",
+        "location": "San Gabriel, CA",
+        "avatar": "LW",
+        "project": "Solar carport, 45 spaces",
+        "quote": "The solar carport project for our community was complex — 45 parking spaces, permits, HOA board approvals. Nason navigated every challenge smoothly. Residents are thrilled with both the shade and the savings."
+      },
+      {
+        "name": "David Kim",
+        "role": "Homeowner",
+        "location": "Temple City, CA",
+        "avatar": "DK",
+        "project": "10kW + Enphase IQ Battery 10",
+        "quote": "After the power outages we've had, backup storage was non-negotiable. The Enphase system has kept our house running through three outages since install. Worth every penny."
+      },
+      {
+        "name": "Sarah Thompson",
+        "role": "CFO",
+        "location": "Monrovia, CA",
+        "avatar": "ST",
+        "project": "50kW commercial + BESS",
+        "quote": "The ROI analysis they provided was detailed and accurate. We hit payback in 4.2 years, exactly as projected. Their transparency about costs and savings is rare in this industry."
+      }
+    ]
   },
   "quote": {
     "subtitle": "Get Started",
@@ -169,7 +220,10 @@
     "submit": "Request Free Quote",
     "submitting": "Submitting...",
     "success": "Thank you! We'll contact you within 24 hours.",
-    "error": "Something went wrong. Please try again."
+    "error": "Something went wrong. Please try again.",
+    "reachDirectly": "Or reach us directly",
+    "responseTime": "We typically respond within 2 hours",
+    "scheduleCall": "Schedule a Call"
   },
   "footer": {
     "tagline": "Veteran-owned solar EPC company serving Los Angeles and Southern California.",
@@ -197,6 +251,51 @@
     "address": "Los Angeles, California",
     "copyright": "Nason Solar, Inc. All rights reserved.",
     "veteran": "Proud Veteran-Owned Business"
+  },
+  "faq": {
+    "subtitle": "Common Questions",
+    "title": "Solar Questions, Answered",
+    "description": "Everything you need to know about going solar with Nason Solar.",
+    "stillHaveQuestions": "Still have questions?",
+    "contactUs": "Contact us directly →",
+    "q1": "How much does solar cost in Southern California?",
+    "q1a": "A typical residential system costs $15,000–$35,000 before incentives. After the federal 30% Investment Tax Credit (ITC) and California rebates, most homeowners pay $10,500–$24,500. Commercial systems vary by size. We provide a detailed, itemized proposal at no cost.",
+    "q2": "How long does the entire process take from start to finish?",
+    "q2a": "Most residential installations are completed in 4–8 weeks: 1–2 weeks for design and engineering, 2–4 weeks for permits and utility approval, and 1–3 days for installation. Commercial projects typically take 8–16 weeks depending on scope.",
+    "q3": "What warranties do you offer?",
+    "q3a": "We provide a 25-year panel performance warranty, 10–25 year inverter warranty, and our own 10-year workmanship warranty. Tesla Powerwall comes with a 10-year warranty. We stand behind every installation we complete.",
+    "q4": "What financing options are available?",
+    "q4a": "We work with top-tier solar lenders offering $0-down loans, low fixed rates, and terms from 5–25 years. We also offer solar leases and PACE financing (Property Assessed Clean Energy) for qualifying properties. We'll help you find the best structure for your situation.",
+    "q5": "How does NEM 3.0 affect my savings?",
+    "q5a": "NEM 3.0 reduced export credits by ~75%, but pairing solar with battery storage (like Tesla Powerwall) offsets this by letting you store energy during the day and use it at peak evening rates. Our designs are optimized for the new NEM 3.0 rules.",
+    "q6": "Do I need a battery with solar?",
+    "q6a": "A battery is not required, but it dramatically increases your benefits under NEM 3.0. Without storage, excess solar is exported at low rates. With a battery, you use that energy at night or during outages, maximizing savings. We recommend storage for most new systems.",
+    "q7": "Will my solar system work during a power outage?",
+    "q7a": "Standard grid-tied systems shut down during outages for safety. However, systems with Tesla Powerwall or Enphase battery storage continue powering your home during an outage. We size backup systems to cover your critical loads.",
+    "q8": "What areas do you serve?",
+    "q8a": "We serve all of Los Angeles County and Southern California, including Arcadia, Pasadena, Monrovia, San Gabriel, Temple City, Alhambra, San Marino, and surrounding communities. Contact us to confirm service at your address."
+  },
+  "gallery": {
+    "subtitle": "Project Portfolio",
+    "title": "Our Completed Installations",
+    "description": "Real projects across Southern California — residential, commercial, battery storage, and EV charging.",
+    "filterAll": "All Projects",
+    "filterResidential": "Residential",
+    "filterCommercial": "Commercial",
+    "filterBattery": "Battery Storage",
+    "filterEV": "EV / Carport"
+  },
+  "calculator": {
+    "subtitle": "Savings Estimator",
+    "title": "How Much Can You Save?",
+    "description": "Adjust your monthly electric bill to see your estimated solar savings. Get an exact quote for free.",
+    "sliderLabel": "Your monthly electric bill",
+    "systemSize": "Recommended System",
+    "monthlySavings": "Monthly Savings",
+    "twentyFiveYearSavings": "25-Year Savings",
+    "co2Offset": "CO₂ Avoided (25yr)",
+    "cta": "Get My Exact Savings",
+    "disclaimer": "Estimates based on Southern California averages. Actual savings depend on your roof, usage, and utility rates. Get a free detailed proposal for precise numbers."
   },
   "chat": {
     "title": "Nason Solar Assistant",

@@ -5,7 +5,8 @@
     "projects": "项目案例",
     "testimonials": "客户评价",
     "contact": "联系我们",
-    "getQuote": "免费报价"
+    "getQuote": "免费报价",
+    "callNow": "立即拨打"
   },
   "hero": {
     "badge": "退伍军人企业 · 加州太阳能总承包",
@@ -14,19 +15,17 @@
     "subtitle": "全方位太阳能EPC公司，提供住宅、商业及公用事业级解决方案。Tesla认证及Enphase白金安装商，服务洛杉矶及整个南加州地区。",
     "cta1": "获取免费报价",
     "cta2": "查看项目案例",
-    "stat1Value": "500+",
+    "pricingHook": "零首付安装太阳能 — 省电费付装机费",
     "stat1Label": "已完成项目",
-    "stat2Value": "25MW+",
     "stat2Label": "装机容量",
-    "stat3Value": "Tesla",
-    "stat3Label": "认证安装商",
-    "stat4Value": "退伍军人",
-    "stat4Label": "创办企业"
+    "stat3Label": "客户满意度",
+    "stat4Label": "施工质保"
   },
   "services": {
     "subtitle": "我们的服务",
     "title": "全面的太阳能与储能解决方案",
     "description": "从屋顶太阳能到公用事业级电站，我们在加州设计、建造和维护清洁能源系统。",
+    "learnMore": "了解更多",
     "residential": {
       "title": "家用太阳能",
       "description": "为您的家庭量身定制屋顶太阳能系统。采用优质一级组件和专业安装，最高可减少90%电费。"
@@ -120,12 +119,64 @@
     "step6": {
       "title": "监控与维护",
       "description": "全天候系统监控和主动维护，确保数十年的最佳性能。"
-    }
+    },
+    "ctaText": "准备好开始了吗？让我们为您设计太阳能系统。"
   },
   "testimonials": {
     "subtitle": "客户故事",
     "title": "听听我们的客户怎么说",
-    "description": "聆听南加州各地选择太阳能的业主和企业的声音。"
+    "description": "聆听南加州各地选择太阳能的业主和企业的声音。",
+    "googleLabel": "基于Google评价",
+    "items": [
+      {
+        "name": "Michael Chen",
+        "role": "住宅业主",
+        "location": "Arcadia, CA",
+        "avatar": "MC",
+        "project": "12kW系统 + 2× Powerwall",
+        "quote": "Nason Solar从报批到安装只用了6周，全程一手包办。我家的电费从每月380美元降到了几乎为零。团队专业高效，每天施工结束后都打扫得干干净净。"
+      },
+      {
+        "name": "Jennifer Park",
+        "role": "物业经理",
+        "location": "Pasadena, CA",
+        "avatar": "JP",
+        "project": "商业85kW系统",
+        "quote": "我们在三处商业地产上安装了太阳能，Nason全部按时完工且费用低于预算。他们的自营团队让协调工作无缝衔接——一个电话搞定所有事。"
+      },
+      {
+        "name": "Robert Garcia",
+        "role": "餐厅老板",
+        "location": "Los Angeles, CA",
+        "avatar": "RG",
+        "project": "30kW系统 + EV充电桩",
+        "quote": "作为退伍军人，我希望与同为退伍军人创办的企业合作。这些人展现出我在军队中熟悉的标准——有条不紊、严谨彻底、不找借口。强力推荐。"
+      },
+      {
+        "name": "Lisa Wang",
+        "role": "业委会主席",
+        "location": "San Gabriel, CA",
+        "avatar": "LW",
+        "project": "太阳能车棚，45个停车位",
+        "quote": "社区的太阳能车棚项目非常复杂——45个停车位、各类许可证、业委会审批。Nason顺利应对了每一个挑战。居民们对遮阳和省钱双重效果都非常满意。"
+      },
+      {
+        "name": "David Kim",
+        "role": "住宅业主",
+        "location": "Temple City, CA",
+        "avatar": "DK",
+        "project": "10kW + Enphase IQ Battery 10",
+        "quote": "经历过多次停电后，备用储能对我来说是必须的。自安装以来，Enphase系统已经帮我们在三次停电中保持正常用电。物超所值。"
+      },
+      {
+        "name": "Sarah Thompson",
+        "role": "财务总监",
+        "location": "Monrovia, CA",
+        "avatar": "ST",
+        "project": "50kW商业系统 + 储能",
+        "quote": "他们提供的投资回报分析详尽准确。我们在4.2年内就实现了回本，与预测完全吻合。他们对成本和收益的透明度在这个行业实属难得。"
+      }
+    ]
   },
   "quote": {
     "subtitle": "立即开始",
@@ -169,7 +220,10 @@
     "submit": "申请免费报价",
     "submitting": "提交中...",
     "success": "感谢您！我们将在24小时内与您联系。",
-    "error": "出了点问题，请重试。"
+    "error": "出了点问题，请重试。",
+    "reachDirectly": "或直接联系我们",
+    "responseTime": "我们通常在2小时内回复",
+    "scheduleCall": "预约通话"
   },
   "footer": {
     "tagline": "退伍军人创办的太阳能EPC公司，服务洛杉矶和南加州地区。",
@@ -197,6 +251,51 @@
     "address": "加州洛杉矶",
     "copyright": "Nason Solar, Inc. 保留所有权利。",
     "veteran": "自豪的退伍军人企业"
+  },
+  "faq": {
+    "subtitle": "常见问题",
+    "title": "太阳能疑问，一一解答",
+    "description": "关于Nason Solar安装太阳能的一切问题，您都能在这里找到答案。",
+    "stillHaveQuestions": "还有其他问题？",
+    "contactUs": "直接联系我们 →",
+    "q1": "南加州安装太阳能要多少钱？",
+    "q1a": "住宅太阳能系统在享受税收优惠前通常需要1.5万至3.5万美元。扣除联邦30%投资税收抵免（ITC）和加州补贴后，大多数业主实际支付约1.05万至2.45万美元。商业项目因规模而异。我们提供免费详细报价。",
+    "q2": "从签约到安装完成需要多长时间？",
+    "q2a": "大多数住宅项目在4–8周内完成：设计工程约需1–2周，审批和电力公司批准需2–4周，安装通常仅需1–3天。商业项目根据规模一般需要8–16周。",
+    "q3": "你们提供哪些质保？",
+    "q3a": "我们提供25年太阳能组件性能质保、10–25年逆变器质保，以及自有的10年施工质量保证。Tesla Powerwall提供10年质保。我们对每一个安装项目负全责。",
+    "q4": "有哪些融资方案可选？",
+    "q4a": "我们与顶级太阳能贷款机构合作，提供零首付贷款、低固定利率，还款期限5–25年可选。其他选择包括太阳能租赁和PACE融资（房产评估清洁能源融资）。我们会帮您找到最合适的方案。",
+    "q5": "NEM 3.0如何影响我的节省？",
+    "q5a": "NEM 3.0将多余太阳能的出口电价降低了约75%。但将太阳能与储能（如Tesla Powerwall）结合可抵消这一影响——白天储存电能，在晚间高峰电价时使用，实现最大节省。我们的方案专门针对NEM 3.0优化设计。",
+    "q6": "我需要同时安装电池储能吗？",
+    "q6a": "储能不是必须的，但在NEM 3.0政策下能大幅提升收益。没有储能，多余电能将以低价出售给电网。有了电池，您可以将这些电能留到晚上或停电时使用。我们建议大多数新系统配备储能。",
+    "q7": "停电时太阳能系统还能工作吗？",
+    "q7a": "普通并网系统在停电时会出于安全考虑自动关闭。但配备Tesla Powerwall或Enphase电池的系统在停电期间仍可为家庭持续供电。我们根据您的关键用电需求设计备用方案。",
+    "q8": "你们服务哪些地区？",
+    "q8a": "我们服务整个洛杉矶县及南加州地区，包括阿凯迪亚、帕萨迪纳、蒙罗维亚、圣盖博、天普城、阿罕布拉、圣马力诺及周边社区。请联系我们确认您的地址是否在服务范围内。"
+  },
+  "gallery": {
+    "subtitle": "项目案例",
+    "title": "已完成的安装项目",
+    "description": "南加州各类真实项目案例——住宅、商业、电池储能及电动车充电。",
+    "filterAll": "全部项目",
+    "filterResidential": "住宅",
+    "filterCommercial": "商业",
+    "filterBattery": "电池储能",
+    "filterEV": "充电桩/车棚"
+  },
+  "calculator": {
+    "subtitle": "节省估算",
+    "title": "您能节省多少？",
+    "description": "拖动滑块输入您的月度电费，即可查看预估太阳能节省金额。免费获取精确报价。",
+    "sliderLabel": "您的月度电费",
+    "systemSize": "推荐系统规模",
+    "monthlySavings": "每月节省",
+    "twentyFiveYearSavings": "25年累计节省",
+    "co2Offset": "减少CO₂（25年）",
+    "cta": "获取精确节省金额",
+    "disclaimer": "以上数据基于南加州平均值估算。实际节省取决于您的屋顶条件、用电量和电费费率。免费获取详细报价以获得精确数字。"
   },
   "chat": {
     "title": "Nason Solar 助手",
