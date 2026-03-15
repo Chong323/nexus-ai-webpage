@@ -1,10 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
 import Certifications from "@/components/Certifications";
+import Features from "@/components/Features";
 import Products from "@/components/Products";
 import Process from "@/components/Process";
+import ProjectGallery from "@/components/ProjectGallery";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
+import SavingsCalculator from "@/components/SavingsCalculator";
 import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
@@ -15,11 +18,14 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
-      <Features />
       <Certifications />
+      <Features />
       <Products />
       <Process />
+      <ProjectGallery />
       <Testimonials />
+      <FAQ />
+      <SavingsCalculator />
       <Pricing />
       <Footer />
       <ChatBot />
