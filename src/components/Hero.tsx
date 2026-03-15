@@ -55,7 +55,7 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col overflow-hidden"
     >
       {/* ── Background ── */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 noise-overlay">
         {/* Gradient placeholder — visible until video loads */}
         <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.08_0.04_260)] via-[oklch(0.12_0.03_255)] to-[oklch(0.10_0.03_248)]" />
         {/* Sunrise amber glow from top */}
@@ -136,7 +136,7 @@ export default function Hero() {
             transition={{ duration: 0.4, delay: 1.1 }}
             className="mb-10"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 border border-primary/25 text-primary text-sm font-semibold">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 text-primary-foreground text-sm font-semibold animated-gradient shadow-[0_0_20px_oklch(0.75_0.17_75/0.25)]">
               ✦ {t("hero.pricingHook")}
             </span>
           </motion.div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "@/i18n/useTranslation";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,12 @@ const stepIcons = [MessageSquare, Ruler, FileText, HardHat, CheckSquare, Monitor
 
 export default function Process() {
   const { t } = useTranslation();
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 85%", "end 40%"],
+  });
+  const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const steps = [1, 2, 3, 4, 5, 6].map((n) => ({
     number: n,
@@ -52,9 +59,13 @@ export default function Process() {
         </div>
 
         {/* ── Mobile: vertical timeline ── */}
-        <div className="lg:hidden relative">
-          {/* Vertical line */}
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
+        <div ref={timelineRef} className="lg:hidden relative">
+          {/* Scroll-driven vertical line */}
+          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border/30" />
+          <motion.div
+            className="absolute left-6 top-0 w-0.5 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/10 origin-top"
+            style={{ scaleY: lineScaleY, height: "100%" }}
+          />
 
           <div className="space-y-8">
             {steps.map((step, idx) => {
@@ -103,8 +114,15 @@ export default function Process() {
               >
                 {/* Connector line to next card (not last in row) */}
                 {idx < 5 && idx % 3 !== 2 && (
-                  <div className="absolute top-7 left-[calc(100%-0.75rem)] w-[calc(100%-3rem)] z-0 pointer-events-none">
-                    <div className="h-0.5 bg-gradient-to-r from-primary/40 to-primary/10" />
+                  <div className="absolute top-7 left-[calc(100%-0.75rem)] w-[calc(100%-3rem)] z-0 pointer-events-none overflow-hidden">
+                    <div className="h-0.5 bg-border/20" />
+                    <motion.div
+                      className="h-0.5 bg-gradient-to-r from-primary/50 to-primary/15 -mt-0.5 origin-left"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true, margin: "-80px" }}
+                      transition={{ duration: 0.8, delay: idx * 0.15, ease: "easeOut" }}
+                    />
                   </div>
                 )}
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, Users, Wrench, Award, Camera } from "lucide-react";
@@ -31,19 +32,33 @@ const blocks = [
   },
 ];
 
-function ImagePlaceholder({ imageSlot }: { imageSlot: string }) {
+function ParallaxImage({ imageSlot }: { imageSlot: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [-24, 24]);
+
   return (
-    <div className="relative rounded-2xl aspect-[4/3] overflow-hidden border border-border/40 bg-gradient-to-br from-muted/35 to-muted/15">
+    <div
+      ref={ref}
+      className="relative rounded-2xl aspect-[4/3] overflow-hidden border border-border/40 bg-gradient-to-br from-muted/35 to-muted/15"
+    >
       {/*
-        Replace with:
-        <Image src={`/images/${imageSlot}.jpg`} fill className="object-cover" alt="" />
+        Replace inner content with:
+        <motion.div style={{ y }} className="absolute inset-[-8%] inset-x-0">
+          <Image src={`/images/${imageSlot}.jpg`} fill className="object-cover" alt="" />
+        </motion.div>
       */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/4 via-transparent to-primary/3" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-muted-foreground/30">
-        <Camera className="w-12 h-12" />
-        <span className="text-xs font-medium tracking-wide">/images/{imageSlot}.jpg</span>
-      </div>
-      <div className="absolute top-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <motion.div style={{ y }} className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/4 via-transparent to-primary/3" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-muted-foreground/30">
+          <Camera className="w-12 h-12" />
+          <span className="text-xs font-medium tracking-wide">/images/{imageSlot}.jpg</span>
+        </div>
+        <div className="absolute top-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      </motion.div>
     </div>
   );
 }
@@ -140,7 +155,7 @@ export default function Products() {
                   transition={{ duration: 0.6, delay: 0.15 }}
                   className={b.reverse ? "lg:col-start-1 lg:row-start-1" : ""}
                 >
-                  <ImagePlaceholder imageSlot={b.imageSlot} />
+                  <ParallaxImage imageSlot={b.imageSlot} />
                 </motion.div>
               </motion.div>
             );
