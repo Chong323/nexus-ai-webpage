@@ -5,7 +5,8 @@
     "projects": "项目案例",
     "testimonials": "客户评价",
     "contact": "联系我们",
-    "getQuote": "免费报价"
+    "getQuote": "免费报价",
+    "callNow": "立即拨打"
   },
   "hero": {
     "badge": "退伍军人企业 · 加州太阳能总承包",
@@ -14,14 +15,11 @@
     "subtitle": "全方位太阳能EPC公司，提供住宅、商业及公用事业级解决方案。Tesla认证及Enphase白金安装商，服务洛杉矶及整个南加州地区。",
     "cta1": "获取免费报价",
     "cta2": "查看项目案例",
-    "stat1Value": "500+",
+    "pricingHook": "零首付安装太阳能 — 省电费付装机费",
     "stat1Label": "已完成项目",
-    "stat2Value": "25MW+",
     "stat2Label": "装机容量",
-    "stat3Value": "Tesla",
-    "stat3Label": "认证安装商",
-    "stat4Value": "退伍军人",
-    "stat4Label": "创办企业"
+    "stat3Label": "客户满意度",
+    "stat4Label": "施工质保"
   },
   "services": {
     "subtitle": "我们的服务",

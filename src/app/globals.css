@@ -127,4 +127,40 @@
     background: oklch(0.97 0.003 80);
     color: oklch(0.15 0.03 255);
   }
+
+  /* ── Certifications marquee ── */
+  .marquee-track {
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* ── Hero primary CTA shimmer ── */
+  .hero-btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      oklch(1 0 0 / 0.18) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0s;
+  }
+  .hero-btn-shine:hover::after {
+    transform: translateX(100%);
+    transition: transform 0.55s ease;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }

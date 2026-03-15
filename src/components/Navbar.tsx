@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { buttonVariants } from "@/components/ui/button";
-import { Menu, X, Sun, Globe } from "lucide-react";
+import { Menu, X, Sun, Globe, Phone } from "lucide-react";
 import { useTranslation } from "@/i18n/useTranslation";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { cn } from "@/lib/utils";
@@ -19,6 +19,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
   const { t } = useTranslation();
   const { locale, setLocale } = useLanguage();
 
@@ -26,6 +27,27 @@ export default function Navbar() {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  // Track active section via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { threshold: 0.35, rootMargin: "-64px 0px 0px 0px" }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   const toggleLocale = () => setLocale(locale === "en" ? "zh" : "en");
@@ -38,7 +60,7 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 font-bold text-xl">
+        <a href="#" className="flex items-center gap-2 font-bold text-xl shrink-0">
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
             <Sun className="w-4 h-4 text-primary-foreground" />
           </div>
@@ -47,20 +69,45 @@ export default function Navbar() {
 
         {/* Desktop Links */}
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {t(link.key)}
-              </a>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const sectionId = link.href.replace("#", "");
+            const isActive = activeSection === sectionId;
+            return (
+              <li key={link.href} className="relative">
+                <a
+                  href={link.href}
+                  className={cn(
+                    "text-sm font-medium transition-colors",
+                    isActive
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {t(link.key)}
+                </a>
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full bg-primary"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </li>
+            );
+          })}
         </ul>
 
-        {/* Desktop CTA */}
+        {/* Desktop right area */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Phone number */}
+          <a
+            href={`tel:${t("quote.phone").replace(/\D/g, "")}`}
+            className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded-md hover:bg-muted/30"
+          >
+            <Phone className="w-3.5 h-3.5" />
+            {t("quote.phone")}
+          </a>
+          {/* Language toggle */}
           <button
             onClick={toggleLocale}
             className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded-md hover:bg-muted/30"
@@ -71,7 +118,10 @@ export default function Navbar() {
           </button>
           <a
             href="#contact"
-            className={cn(buttonVariants({ size: "sm" }), "glow bg-primary text-primary-foreground")}
+            className={cn(
+              buttonVariants({ size: "sm" }),
+              "glow bg-primary text-primary-foreground"
+            )}
           >
             {t("nav.getQuote")}
           </a>
@@ -119,8 +169,20 @@ export default function Navbar() {
               ))}
               <div className="flex flex-col gap-2 pt-2 border-t border-border">
                 <a
+                  href={`tel:${t("quote.phone").replace(/\D/g, "")}`}
+                  className="flex items-center justify-center gap-2 h-9 rounded-md border border-border/60 text-sm font-medium text-foreground hover:bg-muted/30 transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <Phone className="w-4 h-4" />
+                  {t("nav.callNow")}
+                </a>
+                <a
                   href="#contact"
-                  className={cn(buttonVariants({ size: "sm" }), "bg-primary text-primary-foreground text-center")}
+                  className={cn(
+                    buttonVariants({ size: "sm" }),
+                    "bg-primary text-primary-foreground text-center"
+                  )}
+                  onClick={() => setMobileOpen(false)}
                 >
                   {t("nav.getQuote")}
                 </a>

@@ -5,7 +5,8 @@
     "projects": "Projects",
     "testimonials": "Testimonials",
     "contact": "Contact",
-    "getQuote": "Get Free Quote"
+    "getQuote": "Get Free Quote",
+    "callNow": "Call Now"
   },
   "hero": {
     "badge": "Veteran-Owned · California Solar EPC",
@@ -14,14 +15,11 @@
     "subtitle": "Full-service solar EPC company delivering residential, commercial, and utility-scale solutions. Tesla Certified and Enphase Platinum installer serving Los Angeles and all of Southern California.",
     "cta1": "Get a Free Quote",
     "cta2": "View Our Projects",
-    "stat1Value": "500+",
+    "pricingHook": "Go solar for $0 down — pay as you save",
     "stat1Label": "Projects Completed",
-    "stat2Value": "25MW+",
     "stat2Label": "Installed Capacity",
-    "stat3Value": "Tesla",
-    "stat3Label": "Certified Installer",
-    "stat4Value": "Veteran",
-    "stat4Label": "Owned Business"
+    "stat3Label": "Customer Satisfaction",
+    "stat4Label": "Workmanship Warranty"
   },
   "services": {
     "subtitle": "Our Services",
