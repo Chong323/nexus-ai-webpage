@@ -62,7 +62,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 shrink-0">
           <div className="flex items-center justify-center transition-transform hover:scale-105">
-          <img src="/images/logoR.png" alt="Nason Solar Logo" className="h-10 w-auto object-contain" />
+          <img src="/images/logoR.png" alt="Nason Solar Logo" className="h-20 w-auto object-contain" />
         </div>
         </a>
 
