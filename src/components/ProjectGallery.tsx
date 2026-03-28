@@ -123,9 +123,159 @@ export default function ProjectGallery() {
   return (
     <section id="gallery" className="py-24 sm:py-32 bg-muted/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative aspect-video">
-                  <img src={`/images/gallery/${lightbox.imageSlot}.jpg`} className="absolute inset-0 w-full h-full object-cover" alt={lightbox.title} />
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-sm font-semibold text-primary uppercase tracking-widest mb-3"
+          >
+            {t("gallery.subtitle")}
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
+          >
+            {t("gallery.title")}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted-foreground"
+          >
+            {t("gallery.description")}
+          </motion.p>
+        </div>
+
+        {/* Filter tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="flex flex-wrap justify-center gap-2 mb-10"
+        >
+          {categories.map((cat) => (
+            <button
+              key={cat.value}
+              onClick={() => setActiveFilter(cat.value)}
+              className={cn(
+                "px-4 py-1.5 rounded-full text-sm font-medium transition-all",
+                activeFilter === cat.value
+                  ? "bg-primary text-primary-foreground shadow-[0_0_16px_oklch(0.75_0.17_75/0.35)]"
+                  : "border border-border/50 text-muted-foreground hover:border-primary/40 hover:text-foreground"
+              )}
+            >
+              {t(cat.labelKey)}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Grid */}
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project, idx) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3, delay: idx * 0.04 }}
+              >
+                <button
+                  onClick={() => setLightbox(project)}
+                  className="w-full text-left group"
+                  aria-label={`View ${project.title}`}
+                >
+                  <div className="relative rounded-2xl overflow-hidden border border-border/40 bg-card/60 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/30 group-hover:shadow-[0_16px_32px_oklch(0.75_0.17_75/0.1)]">
+                    {/*
+                      IMAGE SLOT — replace with:
+                      <div className="relative aspect-[4/3]">
+                        <Image src={`/images/gallery/${project.imageSlot}.jpg`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" alt={project.title} />
+                      </div>
+                    */}
+                    <div className="relative aspect-[4/3] bg-gradient-to-br from-muted/40 to-muted/20 flex items-center justify-center overflow-hidden">
+                      <img src={`/images/gallery/${project.imageSlot}.jpg`} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt={project.title} />
+                    </div>
+
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                      <div className="flex items-center gap-1.5 text-xs text-primary/80 mb-1">
+                        <Zap className="w-3 h-3" />
+                        <span>{project.systemSize}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs text-primary/80">
+                        <TrendingUp className="w-3 h-3" />
+                        <span>{project.annualSavings}</span>
+                      </div>
+                    </div>
+
+                    {/* Category pill */}
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2 py-0.5 rounded-full bg-background/80 backdrop-blur-sm text-[10px] font-semibold text-primary/80 border border-primary/20 capitalize">
+                        {project.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="px-1 pt-3 pb-1">
+                    <h3 className="font-semibold text-sm text-foreground">{project.title}</h3>
+                    <div className="flex items-center gap-1 mt-0.5">
+                      <MapPin className="w-3 h-3 text-muted-foreground" />
+                      <span className="text-xs text-muted-foreground">{project.location}</span>
+                    </div>
+                  </div>
+                </button>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/90 backdrop-blur-md"
+            onClick={() => setLightbox(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="relative max-w-2xl w-full bg-card rounded-2xl border border-border/50 overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setLightbox(null)}
+                className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-muted transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {/*
+                LIGHTBOX IMAGE SLOT — replace with:
+                <div className="relative aspect-video">
+                  <Image src={`/images/gallery/${lightbox.imageSlot}.jpg`} fill className="object-cover" alt={lightbox.title} />
                 </div>
+              */}
+              <div className="relative aspect-video">
+                <img src={`/images/gallery/${lightbox.imageSlot}.jpg`} className="absolute inset-0 w-full h-full object-cover" alt={lightbox.title} />
+              </div>
 
               <div className="p-6">
                 <div className="flex items-start justify-between gap-4 mb-4">
