@@ -307,5 +307,30 @@
     "suggested2": "Do you install Tesla Powerwall?",
     "suggested3": "What financing options are available?",
     "suggested4": "How long does installation take?"
+  },
+  "promo": {
+    "referralTitle": "Refer a Friend, Earn !",
+    "referralDesc": "Know someone who needs solar or a new roof? Refer family and friends and earn a  cash reward for every successful installation.",
+    "referralBtn": "Start Referring"
+  },
+  "trust": {
+    "title": "Industry Leading Warranties & Trusted Expertise",
+    "desc": "We stand by our installations 100%. Invest in lasting value and reliable power with elite technology and unmatched guarantees.",
+    "b1": {
+      "title": "25-Year Warranty",
+      "desc": "End-to-end coverage on panels, inverters, and workmanship."
+    },
+    "b2": {
+      "title": "Elite Certified",
+      "desc": "Platinum installer for top brands like Enphase and Tesla."
+    },
+    "b3": {
+      "title": "Top Rated Installer",
+      "desc": "Recognized locally for excellence in residential solar EPC."
+    },
+    "b4": {
+      "title": "100% Satisfaction",
+      "desc": "Thousands of 5-star reviews from happy homeowners."
+    }
   }
 }

@@ -10,23 +10,23 @@ export default function TrustBanner() {
   const benefits = [
     {
       icon: ShieldCheck,
-      title: "25-Year Warranty",
-      desc: "End-to-end coverage on panels, inverters, and workmanship.",
+      title: t("trust.b1.title"),
+      desc: t("trust.b1.desc"),
     },
     {
       icon: Medal,
-      title: "Elite Certified",
-      desc: "Platinum installer for top brands like Enphase and Tesla.",
+      title: t("trust.b2.title"),
+      desc: t("trust.b2.desc"),
     },
     {
       icon: Award,
-      title: "Top Rated Installer",
-      desc: "Recognized locally for excellence in residential solar EPC.",
+      title: t("trust.b3.title"),
+      desc: t("trust.b3.desc"),
     },
     {
       icon: ThumbsUp,
-      title: "100% Satisfaction",
-      desc: "Thousands of 5-star reviews from happy homeowners.",
+      title: t("trust.b4.title"),
+      desc: t("trust.b4.desc"),
     },
   ];
 
@@ -35,10 +35,10 @@ export default function TrustBanner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
-            Industry Leading Warranties & Trusted Expertise
+            {t("trust.title")}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            We stand by our installations 100%. Invest in lasting value and reliable power with elite technology and unmatched guarantees.
+            {t("trust.desc")}
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default function TrustBanner() {
             const Icon = b.icon;
             return (
               <motion.div
-                key={b.title}
+                key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
