@@ -61,7 +61,7 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 shrink-0">
-          <img src="/images/logo.png" alt="Nason Solar Logo" className="h-10 w-auto object-contain" />
+          <img src="/images/logo.jpg" alt="Nason Solar Logo" className="h-10 w-auto object-contain" />
         </a>
 
         {/* Desktop Links */}
