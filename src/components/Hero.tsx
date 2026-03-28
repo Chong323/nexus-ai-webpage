@@ -69,18 +69,11 @@ export default function Hero() {
             backgroundSize: "60px 60px",
           }}
         />
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[2000ms]"
-          onLoadedData={(e) => {
-            (e.currentTarget as HTMLVideoElement).style.opacity = "0.55";
-          }}
-        >
-          <source src="/hero-bg.mp4" type="video/mp4" />
-        </video>
+        <img
+          src="/images/service-farm.jpg"
+          alt="Solar Farm"
+          className="absolute inset-0 w-full h-full object-cover opacity-50 transition-opacity duration-1000"
+        />
         {/* Readability overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/35 to-background/75" />
       </div>
