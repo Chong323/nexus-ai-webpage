@@ -53,7 +53,7 @@ export default function Footer() {
           <div className="col-span-2">
             <a href="#" className="flex items-center gap-2 mb-4">
               <div className="inline-flex items-center justify-center mb-4">
-              <img src="/images/logoR.png" alt="Nason Solar Logo" className="h-24 w-auto object-contain" />
+              <img src="/images/logoR.png" alt="Nason Solar Logo" className="h-12 w-auto object-contain scale-[1.5] origin-left" />
             </div>
             </a>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2 max-w-xs">
