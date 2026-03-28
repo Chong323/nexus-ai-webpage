@@ -74,10 +74,8 @@ export default function Hero() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[2000ms]"
-          onLoadedData={(e) => {
-            (e.currentTarget as HTMLVideoElement).style.opacity = "0.55";
-          }}
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+          }
         >
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
