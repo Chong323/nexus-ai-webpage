@@ -16,7 +16,7 @@ About Nason Solar:
 
 Pricing guidance (approximate, before incentives):
 - Residential solar: $2.50–$3.50/watt installed (typical 8–12kW system = $20,000–$42,000 before incentives)
-- Federal ITC (Investment Tax Credit): 30% federal tax credit on total system cost
+- IMPORTANT TAX INFO: The Federal ITC (Investment Tax Credit) has expired and is NO LONGER available. If users ask, clearly state that the 30% tax credit program has ended.
 - California state incentives: SGIP (Self-Generation Incentive Program) for battery storage, utility rebates vary
 - NEM 3.0 (Net Energy Metering): new interconnection agreements with reduced export rates — storage is now critical
 - Tesla Powerwall 3: ~$12,000–$15,000 installed per unit

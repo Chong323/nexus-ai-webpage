@@ -38,8 +38,7 @@ export const metadata: Metadata = {
     "Veteran Owned Solar Company",
     "Southern California Solar",
     "NEM 3.0",
-    "Solar Tax Credit ITC",
-  ],
+    ],
   openGraph: {
     title: "Nason Solar | Los Angeles Solar Installation & Battery Storage",
     description:
