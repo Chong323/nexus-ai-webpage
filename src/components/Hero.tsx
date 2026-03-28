@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Shield, ChevronDown } from "lucide-react";
 import { useTranslation } from "@/i18n/useTranslation";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 
 function CountUp({
   to,
@@ -55,17 +54,35 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0 -z-10 bg-background">
-        <Image
-          src="/images/service-farm.jpg"
-          alt="Solar Farm"
-          fill
-          priority
-          className="object-cover opacity-50 mix-blend-normal"
-          sizes="100vw"
+      {/* ── Background ── */}
+      <div className="absolute inset-0 -z-10 noise-overlay">
+        {/* Gradient placeholder — visible until video loads */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.08_0.04_260)] via-[oklch(0.12_0.03_255)] to-[oklch(0.10_0.03_248)]" />
+        {/* Sunrise amber glow from top */}
+        <div className="absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b from-[oklch(0.75_0.17_75/0.15)] via-transparent to-transparent" />
+        {/* Subtle grid */}
+        <div
+          className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, oklch(0.75 0.17 75) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.75 0.17 75) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background/90 pointer-events-none" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[2000ms]"
+          onLoadedData={(e) => {
+            (e.currentTarget as HTMLVideoElement).style.opacity = "0.55";
+          }}
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+        {/* Readability overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/35 to-background/75" />
       </div>
 
       {/* ── Main content ── */}
