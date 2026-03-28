@@ -51,11 +51,10 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2">
-            <a href="#" className="flex items-center gap-2 font-bold text-xl mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <Sun className="w-4 h-4 text-primary-foreground" />
-              </div>
-              <span className="gradient-text">Nason Solar</span>
+            <a href="#" className="flex items-center gap-2 mb-4">
+              <div className="inline-flex items-center justify-center mb-4">
+              <img src="/images/logoR.png" alt="Nason Solar Logo" className="h-12 w-auto object-contain scale-[1.5] origin-left" />
+            </div>
             </a>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2 max-w-xs">
               {t("footer.tagline")}
@@ -122,8 +121,8 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="text-sm text-muted-foreground">{t("footer.address")}</li>
               <li>
-                <a href="tel:+16265590000" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  (626) 559-0000
+                <a href="tel:+16266880123" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  (626) 688-0123
                 </a>
               </li>
               <li>

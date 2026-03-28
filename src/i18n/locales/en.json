@@ -32,7 +32,7 @@
     },
     "commercial": {
       "title": "Commercial Solar",
-      "description": "Scalable solar solutions for businesses, warehouses, and retail. Maximize your ROI with accelerated depreciation and federal tax credits."
+      "description": "Scalable solar solutions for businesses, warehouses, and retail. Maximize your ROI with accelerated depreciation."
     },
     "battery": {
       "title": "Battery Storage",
@@ -186,7 +186,7 @@
     "benefit2": "Custom system design & proposal",
     "benefit3": "Detailed ROI & savings calculation",
     "benefit4": "Financing options & incentive guidance",
-    "phone": "(626) 559-0000",
+    "phone": "(626)688-0123",
     "email": "info@nasonsolar.com",
     "formTitle": "Request a Free Quote",
     "name": "Full Name",
@@ -227,7 +227,7 @@
   },
   "footer": {
     "tagline": "Veteran-owned solar EPC company serving Los Angeles and Southern California.",
-    "license": "CSLB License #1234567",
+    "license": "CSLB License #1106872",
     "services": "Services",
     "company": "Company",
     "resources": "Resources",
@@ -248,7 +248,7 @@
     "faq": "FAQ",
     "warranty": "Warranty Info",
     "referral": "Referral Program",
-    "address": "Los Angeles, California",
+    "address": "21558 Ferrero Pkwy, Walnut, CA 91789",
     "copyright": "Nason Solar, Inc. All rights reserved.",
     "veteran": "Proud Veteran-Owned Business"
   },
@@ -259,7 +259,7 @@
     "stillHaveQuestions": "Still have questions?",
     "contactUs": "Contact us directly →",
     "q1": "How much does solar cost in Southern California?",
-    "q1a": "A typical residential system costs $15,000–$35,000 before incentives. After the federal 30% Investment Tax Credit (ITC) and California rebates, most homeowners pay $10,500–$24,500. Commercial systems vary by size. We provide a detailed, itemized proposal at no cost.",
+    "q1a": "A typical residential system costs $15,000–$35,000. Commercial systems vary by size. We provide a detailed, itemized proposal at no cost.",
     "q2": "How long does the entire process take from start to finish?",
     "q2a": "Most residential installations are completed in 4–8 weeks: 1–2 weeks for design and engineering, 2–4 weeks for permits and utility approval, and 1–3 days for installation. Commercial projects typically take 8–16 weeks depending on scope.",
     "q3": "What warranties do you offer?",
@@ -307,5 +307,30 @@
     "suggested2": "Do you install Tesla Powerwall?",
     "suggested3": "What financing options are available?",
     "suggested4": "How long does installation take?"
+  },
+  "promo": {
+    "referralTitle": "Refer a Friend, Earn !",
+    "referralDesc": "Know someone who needs solar or a new roof? Refer family and friends and earn a  cash reward for every successful installation.",
+    "referralBtn": "Start Referring"
+  },
+  "trust": {
+    "title": "Industry Leading Warranties & Trusted Expertise",
+    "desc": "We stand by our installations 100%. Invest in lasting value and reliable power with elite technology and unmatched guarantees.",
+    "b1": {
+      "title": "25-Year Warranty",
+      "desc": "End-to-end coverage on panels, inverters, and workmanship."
+    },
+    "b2": {
+      "title": "Elite Certified",
+      "desc": "Platinum installer for top brands like Enphase and Tesla."
+    },
+    "b3": {
+      "title": "Top Rated Installer",
+      "desc": "Recognized locally for excellence in residential solar EPC."
+    },
+    "b4": {
+      "title": "100% Satisfaction",
+      "desc": "Thousands of 5-star reviews from happy homeowners."
+    }
   }
 }

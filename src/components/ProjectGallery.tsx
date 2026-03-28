@@ -202,9 +202,8 @@ export default function ProjectGallery() {
                         <Image src={`/images/gallery/${project.imageSlot}.jpg`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" alt={project.title} />
                       </div>
                     */}
-                    <div className="relative aspect-[4/3] bg-gradient-to-br from-muted/40 to-muted/20 flex items-center justify-center">
-                      <Camera className="w-10 h-10 text-muted-foreground/25" />
-                      <div className="absolute bottom-0 right-0 w-20 h-20 bg-primary/5 rounded-full blur-2xl" />
+                    <div className="relative aspect-[4/3] bg-gradient-to-br from-muted/40 to-muted/20 flex items-center justify-center overflow-hidden">
+                      <img src={`/images/gallery/${project.imageSlot}.jpg`} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt={project.title} />
                     </div>
 
                     {/* Hover overlay */}
@@ -274,8 +273,8 @@ export default function ProjectGallery() {
                   <Image src={`/images/gallery/${lightbox.imageSlot}.jpg`} fill className="object-cover" alt={lightbox.title} />
                 </div>
               */}
-              <div className="aspect-video bg-gradient-to-br from-muted/40 to-muted/20 flex items-center justify-center">
-                <Camera className="w-16 h-16 text-muted-foreground/20" />
+              <div className="relative aspect-video">
+                <img src={`/images/gallery/${lightbox.imageSlot}.jpg`} className="absolute inset-0 w-full h-full object-cover" alt={lightbox.title} />
               </div>
 
               <div className="p-6">

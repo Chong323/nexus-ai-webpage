@@ -60,11 +60,10 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 font-bold text-xl shrink-0">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <Sun className="w-4 h-4 text-primary-foreground" />
-          </div>
-          <span className="gradient-text">Nason Solar</span>
+        <a href="#" className="flex items-center gap-2 shrink-0 ml-4 lg:ml-8">
+          <div className="flex items-center justify-center transition-transform hover:scale-105">
+          <img src="/images/logoR.png" alt="Nason Solar Logo" className="h-10 w-auto object-contain scale-[1.8] origin-left" />
+        </div>
         </a>
 
         {/* Desktop Links */}
