@@ -9,6 +9,7 @@ import ProjectGallery from "@/components/ProjectGallery";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import SavingsCalculator from "@/components/SavingsCalculator";
+import PromoBanners from "@/components/PromoBanners";
 import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
@@ -28,6 +29,7 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <SavingsCalculator />
+      <PromoBanners />
       <Pricing />
       <Footer />
       <ChatBot />
