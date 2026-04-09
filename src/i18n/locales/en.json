@@ -306,7 +306,8 @@
     "suggested1": "How much does solar cost?",
     "suggested2": "Do you install Tesla Powerwall?",
     "suggested3": "What financing options are available?",
-    "suggested4": "How long does installation take?"
+    "suggested4": "How long does installation take?",
+    "error": "Sorry, I'm having trouble connecting right now. Please try again in a moment."
   },
   "promo": {
     "referralTitle": "Refer a Friend, Earn !",

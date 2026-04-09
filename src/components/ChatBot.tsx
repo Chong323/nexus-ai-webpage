@@ -104,68 +104,91 @@ export default function ChatBot() {
       setInput("");
       setStreaming(true);
 
-      try {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: newMessages }),
-        });
+      const maxRetries = 2;
+      for (let attempt = 0; attempt <= maxRetries; attempt++) {
+        try {
+          const res = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ messages: newMessages }),
+          });
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-        const reader = res.body?.getReader();
-        if (!reader) throw new Error("No response body");
+          const reader = res.body?.getReader();
+          if (!reader) throw new Error("No response body");
 
-        const decoder = new TextDecoder();
-        let assistantContent = "";
+          const decoder = new TextDecoder();
+          let assistantContent = "";
 
-        setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+          setMessages((prev) => {
+            // Remove any prior empty assistant message from a failed retry
+            const cleaned = prev.filter(
+              (m, i) => !(i === prev.length - 1 && m.role === "assistant" && m.content === "")
+            );
+            return [...cleaned, { role: "assistant", content: "" }];
+          });
 
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
 
-          const chunk = decoder.decode(value, { stream: true });
-          const lines = chunk.split("\n");
+            const chunk = decoder.decode(value, { stream: true });
+            const lines = chunk.split("\n");
 
-          for (const line of lines) {
-            if (line.startsWith("data: ")) {
-              const data = line.slice(6).trim();
-              if (data === "[DONE]") break;
-              try {
-                const parsed = JSON.parse(data);
-                if (parsed.text) {
-                  assistantContent += parsed.text;
-                  setMessages((prev) => {
-                    const updated = [...prev];
-                    updated[updated.length - 1] = {
-                      role: "assistant",
-                      content: assistantContent,
-                    };
-                    return updated;
-                  });
+            for (const line of lines) {
+              if (line.startsWith("data: ")) {
+                const data = line.slice(6).trim();
+                if (data === "[DONE]") break;
+                try {
+                  const parsed = JSON.parse(data);
+                  if (parsed.text) {
+                    assistantContent += parsed.text;
+                    setMessages((prev) => {
+                      const updated = [...prev];
+                      updated[updated.length - 1] = {
+                        role: "assistant",
+                        content: assistantContent,
+                      };
+                      return updated;
+                    });
+                  }
+                } catch {
+                  // skip malformed JSON
                 }
-              } catch {
-                // skip malformed JSON
               }
             }
           }
+
+          // Success — break out of retry loop
+          break;
+        } catch (err) {
+          console.error(`Chat error (attempt ${attempt + 1}):`, err);
+          if (attempt < maxRetries) {
+            // Wait briefly before retrying
+            await new Promise((r) => setTimeout(r, 800));
+            continue;
+          }
+          // All retries exhausted
+          setMessages((prev) => {
+            const cleaned = prev.filter(
+              (m, i) => !(i === prev.length - 1 && m.role === "assistant" && m.content === "")
+            );
+            return [
+              ...cleaned,
+              {
+                role: "assistant",
+                content: t("chat.error"),
+              },
+            ];
+          });
         }
-      } catch (err) {
-        console.error("Chat error:", err);
-        setMessages((prev) => [
-          ...prev,
-          {
-            role: "assistant",
-            content: "Sorry, I encountered an error. Please try again.",
-          },
-        ]);
-      } finally {
-        setStreaming(false);
-        textareaRef.current?.focus();
       }
+
+      setStreaming(false);
+      textareaRef.current?.focus();
     },
-    [messages, streaming]
+    [messages, streaming, t]
   );
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

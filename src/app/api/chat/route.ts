@@ -40,8 +40,14 @@ Your personality:
 - Never make up certifications, warranties, or specific projects
 - For complex commercial or utility-scale inquiries, suggest scheduling a call with the team`;
 
+export const maxDuration = 30; // Allow up to 30s for Vercel serverless
+
 export async function POST(req: NextRequest) {
   try {
+    if (!process.env.GOOGLE_API_KEY) {
+      return NextResponse.json({ error: "API key not configured" }, { status: 500 });
+    }
+
     const { messages } = await req.json();
 
     if (!messages || !Array.isArray(messages)) {
